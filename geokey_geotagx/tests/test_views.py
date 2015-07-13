@@ -33,3 +33,21 @@ class ImportTest(TestCase):
 
         self.assertEqual(response.status_code, 201)
         self.assertEqual(Observation.objects.count(), 3)
+
+
+class ViewerTest(TestCase):
+    def setUp(self):
+        self.view = Viewer.as_view()
+        self.request = HttpRequest()
+        self.request.method = 'GET'
+        self.request.user = AnonymousUser()
+        self.project = ProjectF.create()
+
+    def test_get(self):
+        response = self.view(self.request, project_id=self.project.id).render()
+        rendered = render_to_string(
+            'geotagx_viewer.html',
+            {'project': self.project}
+        )
+        self.assertEqual(unicode(response.content), rendered)
+        self.assertEqual(response.status_code, 200)
