@@ -1,4 +1,5 @@
 from json import dumps as json_dumps
+from django.views.generic import TemplateView
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -7,9 +8,6 @@ from rest_framework import status
 from geokey.users.models import User
 from geokey.contributions.serializers import ContributionSerializer
 from geokey.projects.models import Project
-from geokey.categories.models import Category
-
-import settings
 
 
 class Import(APIView):
@@ -31,9 +29,9 @@ class Import(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
 
-    def post(self, request):
-        self.project = Project.objects.get(pk=settings.project)
-        self.category = Category.objects.get(pk=settings.category)
+    def post(self, request, project_id):
+        self.project = Project.objects.get(pk=project_id)
+        self.category = self.project.categories.get(name='Result')
 
         data = request.DATA
 
