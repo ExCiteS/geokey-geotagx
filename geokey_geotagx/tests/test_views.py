@@ -49,5 +49,6 @@ class ViewerTest(TestCase):
             'geotagx_viewer.html',
             {'project': self.project}
         )
-        self.assertEqual(unicode(response.content), rendered)
+
+        self.assertEqual(unicode(response.content.decode('utf-8')), rendered)
         self.assertEqual(response.status_code, 200)
