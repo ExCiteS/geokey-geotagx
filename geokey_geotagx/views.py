@@ -33,7 +33,7 @@ class Import(APIView):
         self.project = Project.objects.get(pk=project_id)
         self.category = self.project.categories.get(name='Result')
 
-        data = request.DATA
+        data = request.data
 
         if data['type'] == 'FeatureCollection':
             for feature in data['features']:

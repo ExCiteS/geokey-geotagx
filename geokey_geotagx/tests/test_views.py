@@ -11,6 +11,8 @@ from rest_framework.test import APIRequestFactory
 from geokey.contributions.models import Observation
 from geokey.projects.tests.model_factories import ProjectF
 from geokey.categories.tests.model_factories import CategoryFactory
+from geokey.users.models import User
+from geokey.users.tests.model_factories import UserF
 
 from ..views import Import, Viewer
 from data import FEATURES
@@ -18,6 +20,8 @@ from data import FEATURES
 
 class ImportTest(TestCase):
     def setUp(self):
+        if not User.objects.filter(display_name='AnonymousUser').exists():
+            UserF.create(display_name='AnonymousUser')
         self.project = ProjectF.create()
         CategoryFactory.create(**{'project': self.project, 'name': 'Result'})
 
