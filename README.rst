@@ -76,6 +76,7 @@ API
 To import results post a feature collection:
 
 .. code-block:: console
+
     POST /api/geotagx/import/
     Content-Type: application/json
 
@@ -87,6 +88,7 @@ To import results post a feature collection:
 Returns (if successful):
 
 .. code-block:: console
+
     HTTP/1.1 201 Created
 
     Objects created
