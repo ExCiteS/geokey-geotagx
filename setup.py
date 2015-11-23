@@ -1,29 +1,22 @@
-import os
-del os.link
+#!/usr/bin/env python
 
-from distutils.core import setup
+from os.path import join
+from setuptools import setup, find_packages
+
+
+name = 'geokey-geotagx'
+version = __import__(name.replace('-', '_')).__version__
+repository = join('https://github.com/ExCiteS', name)
 
 setup(
-    # Application name:
-    name="geokey-geotagx",
-
-    # Version number (initial):
-    version="0.1.0",
-
-    # Application author details:
-    author="Oliver Roick",
-    author_email="o.roick@ucl.ac.uk",
-
-    # Packages
-    packages=["geokey_geotagx"],
-
-    # Include additional files into the package
+    name=name,
+    version=version,
+    description='Import results from GeoTag-X',
+    url=repository,
+    download_url=join(repository, 'tarball', version),
+    author='Oliver Roick',
+    author_email='excitesucl@gmail.com',
+    license='MIT',
+    packages=find_packages(exclude=['*.tests', '*.tests.*', 'tests.*']),
     include_package_data=True,
-
-    # long_description=open("README.txt").read(),
-
-    # Dependent packages (distributions)
-    install_requires=[
-
-    ],
 )

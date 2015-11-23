@@ -1,7 +1,12 @@
 from geokey.extensions.base import register
+
+
+VERSION = (0, 1, 0)
+__version__ = '.'.join(map(str, VERSION))
+
 register(
     'geokey_geotagx',
-    'GeoKey GeotagX',
+    'GeoTag-X',
     display_admin=False,
     superuser=False
 )
