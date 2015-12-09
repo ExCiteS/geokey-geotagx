@@ -9,10 +9,10 @@ from django.template.loader import render_to_string
 from rest_framework.test import APIRequestFactory
 
 from geokey.contributions.models import Observation
-from geokey.projects.tests.model_factories import ProjectF
+from geokey.projects.tests.model_factories import ProjectFactory
 from geokey.categories.tests.model_factories import CategoryFactory
 from geokey.users.models import User
-from geokey.users.tests.model_factories import UserF
+from geokey.users.tests.model_factories import UserFactory
 
 from ..views import Import, Viewer
 from data import FEATURES
@@ -21,8 +21,8 @@ from data import FEATURES
 class ImportTest(TestCase):
     def setUp(self):
         if not User.objects.filter(display_name='AnonymousUser').exists():
-            UserF.create(display_name='AnonymousUser')
-        self.project = ProjectF.create()
+            UserFactory.create(display_name='AnonymousUser')
+        self.project = ProjectFactory.create()
         CategoryFactory.create(**{'project': self.project, 'name': 'Result'})
 
     def test_post_with_feature_collection(self):
@@ -45,7 +45,7 @@ class ViewerTest(TestCase):
         self.request = HttpRequest()
         self.request.method = 'GET'
         self.request.user = AnonymousUser()
-        self.project = ProjectF.create()
+        self.project = ProjectFactory.create()
 
     def test_get(self):
         response = self.view(self.request, project_id=self.project.id).render()
