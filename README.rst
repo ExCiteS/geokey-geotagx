@@ -45,12 +45,6 @@ Add the package to installed apps:
         'geokey_geotagx',
     )
 
-Migrate the models into the database:
-
-.. code-block:: console
-
-    python manage.py migrate geokey_geotagx
-
 You're now ready to go!
 
 Test
