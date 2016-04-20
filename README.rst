@@ -15,6 +15,8 @@ geokey-geotagx
 
 Import results from `GeoTag-X <http://geotagx.org>`_.
 
+**WARNING:** the extension is no longer maintained, and will not include any fixes or future versions of GeoKey support.
+
 Install
 -------
 
