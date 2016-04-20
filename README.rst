@@ -70,7 +70,7 @@ To import results POST a feature collection:
 
 .. code-block:: console
 
-    POST /api/geotagx/import/
+    POST /api/geotagx/:project_id/import/
     Content-Type: application/json
 
     {
