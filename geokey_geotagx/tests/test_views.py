@@ -2,9 +2,6 @@ from json import dumps as json_dumps
 
 from django.test import TestCase
 from django.core.urlresolvers import reverse
-from django.http import HttpRequest
-from django.contrib.auth.models import AnonymousUser
-from django.template.loader import render_to_string
 
 from rest_framework.test import APIRequestFactory
 
@@ -14,7 +11,7 @@ from geokey.categories.tests.model_factories import CategoryFactory
 from geokey.users.models import User
 from geokey.users.tests.model_factories import UserFactory
 
-from ..views import Import, Viewer
+from ..views import Import
 from data import FEATURES
 
 
@@ -37,22 +34,3 @@ class ImportTest(TestCase):
 
         self.assertEqual(response.status_code, 201)
         self.assertEqual(Observation.objects.count(), 3)
-
-
-class ViewerTest(TestCase):
-    def setUp(self):
-        self.view = Viewer.as_view()
-        self.request = HttpRequest()
-        self.request.method = 'GET'
-        self.request.user = AnonymousUser()
-        self.project = ProjectFactory.create()
-
-    def test_get(self):
-        response = self.view(self.request, project_id=self.project.id).render()
-        rendered = render_to_string(
-            'geotagx_viewer.html',
-            {'project': self.project}
-        )
-
-        self.assertEqual(unicode(response.content.decode('utf-8')), rendered)
-        self.assertEqual(response.status_code, 200)

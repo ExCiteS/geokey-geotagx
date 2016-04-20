@@ -1,5 +1,4 @@
 from json import dumps as json_dumps
-from django.views.generic import TemplateView
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -40,11 +39,3 @@ class Import(APIView):
                 self.store_feature(feature)
 
             return Response('Objects created', status=status.HTTP_201_CREATED)
-
-
-class Viewer(TemplateView):
-    template_name = 'geotagx_viewer.html'
-
-    def get_context_data(self, project_id):
-        project = Project.objects.get(pk=project_id)
-        return {'project': project}
