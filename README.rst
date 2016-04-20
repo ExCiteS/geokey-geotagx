@@ -18,6 +18,11 @@ Import results from `GeoTag-X <http://geotagx.org>`_.
 Install
 -------
 
+geokey-geotagx requires:
+
+- Python version 2.7
+- GeoKey versions 0.9, 0.10, or 1.0
+
 Install the extension from PyPI:
 
 .. code-block:: console
