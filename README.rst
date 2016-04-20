@@ -66,7 +66,7 @@ Check code coverage:
 API
 ---
 
-To import results post a feature collection:
+To import results POST a feature collection:
 
 .. code-block:: console
 
