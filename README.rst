@@ -15,15 +15,13 @@ geokey-geotagx
 
 Import results from `GeoTag-X <http://geotagx.org>`_.
 
-**WARNING:** the extension is no longer maintained, and will not include any fixes or future versions of GeoKey support.
-
 Install
 -------
 
 geokey-geotagx requires:
 
 - Python version 2.7
-- GeoKey versions 0.9, 0.10, or 1.0
+- GeoKey version 1.0 or greater
 
 Install the extension from PyPI:
 
@@ -48,6 +46,15 @@ Add the package to installed apps:
     )
 
 You're now ready to go!
+
+Update
+------
+
+Update the geokey-dataimports from PyPI:
+
+.. code-block:: console
+
+    pip install -U geokey-geotagx
 
 Test
 ----
