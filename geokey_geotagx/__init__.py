@@ -1,12 +1,18 @@
-from geokey.extensions.base import register
-
+"""Main initialisation for extension."""
 
 VERSION = (0, 2, 0)
 __version__ = '.'.join(map(str, VERSION))
 
-register(
-    'geokey_geotagx',
-    'GeoTag-X',
-    display_admin=False,
-    superuser=False
-)
+
+try:
+    from geokey.extensions.base import register
+
+    register(
+        'geokey_geotagx',
+        'GeoTag-X',
+        display_admin=True,
+        superuser=False,
+        version=__version__
+    )
+except BaseException:
+    print 'Please install GeoKey first'
